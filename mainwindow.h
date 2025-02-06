@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#include "calculatormanager.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -19,5 +21,11 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    CalculatorManager manager;
+
+    void update_calculations(char c);
+
+private slots:
+    void on_btn1_clicked();
 };
 #endif // MAINWINDOW_H
