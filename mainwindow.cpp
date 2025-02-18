@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QMessageBox>
+#include <QLineEdit>
+#include <QWidget>
+#include <QPushButton>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -14,12 +16,16 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_btn1_clicked()
+void MainWindow::handle_button_clicked()
 {
-    QMessageBox::information(this, "Button Clicked", "You clicked the button!");
+    QPushButton *button = qobject_cast<QPushButton *>(sender());
+    QString button_text = button->text();
+    this->update_calculations(button_text.at(0));
 }
 
-void MainWindow::update_calculations(char c)
+void MainWindow::update_calculations(QChar c)
 {
-
+    QWidget *widget = this->findChild<QWidget *>("wMainWidget");
+    QLineEdit *edt = widget->findChild<QLineEdit *>("edtResult");
+    manager.calculate(c, edt);
 }

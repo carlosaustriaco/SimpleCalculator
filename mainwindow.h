@@ -23,9 +23,9 @@ private:
     Ui::MainWindow *ui;
     CalculatorManager manager;
 
-    void update_calculations(char c);
+    void update_calculations(QChar c);
 
-private slots:
-    void on_btn1_clicked();
+public slots:
+    void handle_button_clicked();
 };
 #endif // MAINWINDOW_H
